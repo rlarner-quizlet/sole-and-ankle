@@ -59,12 +59,18 @@ const Wrapper = styled.article``;
 
 const ImageWrapper = styled.div`
   position: relative;
+  `;
+
+const Image = styled.img`
+  border-radius: 16px 16px 4px 4px;
+  height: 312px;
+  width: 340px;
 `;
 
-const Image = styled.img``;
-
 const Row = styled.div`
+  display: flex;
   font-size: 1rem;
+  justify-content: space-between;
 `;
 
 const Name = styled.h3`
