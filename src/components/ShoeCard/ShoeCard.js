@@ -31,11 +31,13 @@ const ShoeCard = ({
       ? 'new-release'
       : 'default'
 
+  const label = getLabel(variant);
   return (
     <Link href={`/shoe/${slug}`}>
       <Wrapper>
         <ImageWrapper>
           <Image alt="" src={imageSrc} />
+          {variant === 'default' ? null : <Label variant={variant} >{label}</Label> }
         </ImageWrapper>
         <Spacer size={12} />
         <Row>
@@ -67,6 +69,18 @@ const Image = styled.img`
   width: 340px;
 `;
 
+const Label = styled.div`
+  background-color: ${props => props.variant === 'new-release' ? COLORS.secondary : COLORS.primary};
+  color: ${COLORS.white};
+  height: 32px;
+  line-height: 32px;
+  position: absolute;
+  right: -4px;
+  text-align: center;
+  top: 12px;
+  width: ${props => props.variant === 'new-release' ? '118px' : '49px'};
+`;
+
 const Row = styled.div`
   display: flex;
   font-size: 1rem;
@@ -89,4 +103,13 @@ const SalePrice = styled.span`
   color: ${COLORS.primary};
 `;
 
+const getLabel = (variant) => {
+  if (variant === 'new-release') {
+    return 'Just released!';
+  } else if (variant === 'on-sale') {
+    return 'Sale';
+  } else {
+    return null;
+  }
+}
 export default ShoeCard;
