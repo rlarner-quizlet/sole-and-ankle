@@ -37,15 +37,20 @@ const ShoeCard = ({
       <Wrapper>
         <ImageWrapper>
           <Image alt="" src={imageSrc} />
-          {variant === 'default' ? null : <Label variant={variant} >{label}</Label> }
+          {variant === 'on-sale' ? <SaleLabel variant={variant} >{label}</SaleLabel> : null}
+          {variant === 'new-release' ? <NewReleaseLabel variant={variant} >{label}</NewReleaseLabel> : null}
         </ImageWrapper>
         <Spacer size={12} />
         <Row>
           <Name>{name}</Name>
-          <Price>{formatPrice(price)}</Price>
+          <Price style={{
+            '--color': variant === 'on-sale' ? COLORS.gray[700] : undefined,
+            '--text-decoration': variant === 'on-sale' ? 'line-through' : undefined
+            }} >{formatPrice(price)}</Price>
         </Row>
         <Row>
           <ColorInfo>{pluralize('Color', numOfColors)}</ColorInfo>
+          {variant === 'on-sale' ? <SalePrice>{formatPrice(salePrice)}</SalePrice> : null}
         </Row>
       </Wrapper>
     </Link>
@@ -69,15 +74,25 @@ const Image = styled.img`
 `;
 
 const Label = styled.div`
-  background-color: ${props => props.variant === 'new-release' ? COLORS.secondary : COLORS.primary};
+  border-radius: 2px;
   color: ${COLORS.white};
+  font-size: ${14 / 18}rem;
+  font-weight: ${WEIGHTS.bold};
   height: 32px;
   line-height: 32px;
+  padding: 0 10px;
   position: absolute;
   right: -4px;
   text-align: center;
   top: 12px;
-  width: ${props => props.variant === 'new-release' ? '118px' : '49px'};
+`;
+
+const SaleLabel = styled(Label)`
+  background-color: ${COLORS.primary};
+`;
+
+const NewReleaseLabel = styled(Label)`
+  background-color: ${COLORS.secondary };
 `;
 
 const Row = styled.div`
@@ -91,7 +106,10 @@ const Name = styled.h3`
   color: ${COLORS.gray[900]};
 `;
 
-const Price = styled.span``;
+const Price = styled.span`
+  color: var(--color);
+  text-decoration: var(--text-decoration);
+`;
 
 const ColorInfo = styled.p`
   color: ${COLORS.gray[700]};
