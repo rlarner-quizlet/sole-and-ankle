@@ -14,6 +14,7 @@ const Header = () => {
       <SuperHeader />
       <MainHeader>
         <Logo />
+        <Side />
         <Nav>
           <NavLink href="/sale">Sale</NavLink>
           <NavLink href="/new">New&nbsp;Releases</NavLink>
@@ -27,23 +28,28 @@ const Header = () => {
           <SearchIcon id="search" strokeWidth={1} size={16} />
           <Menu id="menu" strokeWidth={1} size={16} />
         </MobileNav>
+        <Side />
       </MainHeader>
     </header>
   );
 };
 
 const MainHeader = styled.div`
+  align-items: baseline;
   border-bottom: 1px solid ${COLORS.gray[300]};
   display: flex;
+  height: 72px;
   padding: 21px 32px;
 `;
 
-const Nav = styled.nav`
-  align-items: center;
-  display: flex;
-  flex-grow: 1;
-  justify-content: space-evenly;
+const Side = styled.nav`
+  flex: 1;
+`;
 
+const Nav = styled.nav`
+  display: flex;
+  gap: 48px;
+  margin: 0px 48px;
 
   @media (max-width: 768px) {
     display: none;
