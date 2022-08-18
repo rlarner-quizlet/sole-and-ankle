@@ -33,13 +33,13 @@ const Select = ({ label, value, children, ...delegated }) => {
 };
 
 const Wrapper = styled.label`
+  align-items: baseline;
   display: flex;
 `;
 
 const VisibleLabel = styled.span`
   color: ${COLORS.gray[700]};
   margin-right: 16px;
-  padding-top: 12px;
 `;
 
 const SelectWrapper = styled.div`
