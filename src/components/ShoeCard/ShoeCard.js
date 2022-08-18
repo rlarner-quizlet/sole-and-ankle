@@ -65,8 +65,7 @@ const ImageWrapper = styled.div`
 
 const Image = styled.img`
   border-radius: 16px 16px 4px 4px;
-  height: 312px;
-  width: 340px;
+  width: 100%;
 `;
 
 const Label = styled.div`
