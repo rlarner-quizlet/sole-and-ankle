@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components/macro';
 
 import { COLORS, WEIGHTS } from '../../constants';
+import Icon from '../Icon';
 import Logo from '../Logo';
 import SuperHeader from '../SuperHeader';
 
@@ -21,6 +22,11 @@ const Header = () => {
           <NavLink href="/kids">Kids</NavLink>
           <NavLink href="/collections">Collections</NavLink>
         </Nav>
+        <MobileNav>
+          <ShoppingBag id="shopping-bag" strokeWidth={1} size={16} />
+          <SearchIcon id="search" strokeWidth={1} size={16} />
+          <Menu id="menu" strokeWidth={1} size={16} />
+        </MobileNav>
       </MainHeader>
     </header>
   );
@@ -37,6 +43,46 @@ const Nav = styled.nav`
   display: flex;
   flex-grow: 1;
   justify-content: space-evenly;
+
+
+  @media (max-width: 768px) {
+    display: none;
+}`;
+
+const MobileNav = styled.nav`
+border: 3px solid red;
+  position: relative;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    display: none;
+}`;
+
+const SearchIcon = styled(Icon)`
+  position: absolute;
+  top: 0;
+  left: 30px;
+  bottom: 0;
+  width: 16px;
+  height: 16px;
+`;
+
+const ShoppingBag = styled(Icon)`
+  position: absolute;
+  top: 0;
+  left: 20px;
+  bottom: 0;
+  width: 16px;
+  height: 16px;
+`;
+
+const Menu = styled(Icon)`
+  position: absolute;
+  top: 0;
+  left: 10px;
+  bottom: 0;
+  width: 16px;
+  height: 16px;
 `;
 
 const NavLink = styled.a`

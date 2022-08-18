@@ -29,11 +29,16 @@ const Wrapper = styled.div`
   display: flex;
   font-size: 0.875rem;
   padding: 12px 32px;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const MarketingMessage = styled.span`
   color: ${COLORS.white};
   flex-grow: 1;
+
 `;
 
 const HelpLink = styled.a`
